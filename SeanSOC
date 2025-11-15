@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Toolkit - התפריט המאוחד</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 5em;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #60a5fa;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .feature-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2));
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            transition: all 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.4);
+            border-color: rgba(139, 92, 246, 0.6);
+        }
+
+        .feature-icon {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #a78bfa;
+        }
+
+        .code-section {
+            background: #0f172a;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-right: 5px solid #8b5cf6;
+            overflow-x: auto;
+        }
+
+        .code-section code {
+            color: #10b981;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+
+        .step-container {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .step:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-10px);
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-left: 20px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 1.3em;
+            color: #a78bfa;
+            margin-bottom: 10px;
+        }
+
+        .screenshot {
+            background: #0f172a;
+            border: 4px solid #334155;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.88em;
+            line-height: 1.9;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .screenshot-good {
+            border-color: #10b981;
+            background: linear-gradient(135deg, #0f172a 0%, #064e3b 100%);
+        }
+
+        .screenshot-bad {
+            border-color: #ef4444;
+            background: linear-gradient(135deg, #0f172a 0%, #7f1d1d 100%);
+        }
+
+        .screenshot-title {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            margin: -30px -30px 25px -30px;
+            border-radius: 16px 16px 0 0;
+            font-weight: bold;
+            font-size: 1.2em;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-option {
+            background: rgba(139, 92, 246, 0.1);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 12px;
+            border-right: 4px solid #8b5cf6;
+            transition: all 0.3s;
+        }
+
+        .menu-option:hover {
+            background: rgba(139, 92, 246, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .menu-number {
+            display: inline-block;
+            background: #8b5cf6;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.2));
+            border-right: 5px solid #3b82f6;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(220, 38, 38, 0.2));
+            border-right: 5px solid #ef4444;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(22, 163, 74, 0.2));
+            border-right: 5px solid #22c55e;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .status-good { color: #10b981; font-weight: bold; }
+        .status-warning { color: #f59e0b; font-weight: bold; }
+        .status-error { color: #ef4444; font-weight: bold; }
+        .status-info { color: #3b82f6; font-weight: bold; }
+
+        .ip-highlight {
+            background: rgba(251, 191, 36, 0.3);
+            border: 2px solid #fbbf24;
+            padding: 5px 12px;
+            border-radius: 8px;
+            color: #fbbf24;
+            font-weight: bold;
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        ul.feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.feature-list li {
+            padding: 12px 0 12px 35px;
+            position: relative;
+            margin: 8px 0;
+        }
+
+        ul.feature-list li:before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            color: #10b981;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .action-box {
+            background: rgba(139, 92, 246, 0.2);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .action-box h4 {
+            color: #a78bfa;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 18px;
+            text-align: right;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            background: rgba(139, 92, 246, 0.3);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .highlight {
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 70px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .logo {
+                font-size: 3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🎮</div>
+            <h1>Cybersecurity Toolkit</h1>
+            <div class="subtitle">התפריט המאוחד לכלי אבטחת המידע</div>
+            <p style="font-size: 1.1em; margin-top: 15px;">כל הכלים במקום אחד נוח ומאורגן</p>
+            <div class="version-badge">📦 cybersec_toolkit.py | Python 3.x</div>
+        </header>
+
+        <!-- מה זה התפריט המאוחד -->
+        <div class="main-card">
+            <h2 class="section-title">🎯 מה זה התפריט המאוחד?</h2>
+            
+            <p style="font-size: 1.2em; text-align: center; margin: 30px 0;">
+                <strong>cybersec_toolkit.py</strong> הוא תפריט מרכזי חכם שמאחד את כל 3 כלי אבטחת המידע שבנינו 
+                לתוך ממשק אחד נוח וידידותי למשתמש. במקום להריץ כל כלי בנפרד, אתה פשוט מפעיל את התפריט 
+                ובוחר איזה כלי אתה רוצה להשתמש בו!
+            </p>
+
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <span class="feature-icon">🎯</span>
+                    <div class="feature-title">גישה מרכזית</div>
+                    <p>כל הכלים זמינים ממקום אחד - לא צריך לזכור שמות קבצים</p>
+                </div>
+
+                <div class="feature-box">
+                    <span class="feature-icon">🎨</span>
+                    <div class="feature-title">ממשק יפה</div>
+                    <p>תפריט מעוצב עם ASCII art וצבעים</p>
+                </div>
+
+                <div class="feature-box">
+                    <span class="feature-icon">⚡</span>
+                    <div class="feature-title">קל לשימוש</div>
+                    <p>פשוט בחר מספר - הכל אינטואיטיבי</p>
+                </div>
+
+                <div class="feature-box">
+                    <span class="feature-icon">🔄</span>
+                    <div class="feature-title">חזרה אוטומטית</div>
+                    <p>אחרי כל כלי, חוזר לתפריט הראשי</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- מדריך הרצה -->
+        <div class="main-card">
+            <h2 class="section-title">🚀 איך מריצים את התפריט?</h2>
+
+            <div class="step-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">ודא שכל הקבצים במקום</div>
+                        <div class="code-section">
+                            <code>
+C:\PythonProjects\<br>
+├── cybersec_toolkit.py    ← הקובץ המרכזי<br>
+├── port_scanner.py<br>
+├── network_scanner.py<br>
+└── packet_sniffer.py
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">פתח PowerShell</div>
+                        <p>אם תבחר כלים 2 או 3 - פתח כ-Administrator!</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">הרץ את התפריט</div>
+                        <div class="code-section">
+                            <code>
+cd C:\PythonProjects<br>
+python cybersec_toolkit.py
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- דוגמאות תוצאות -->
+        <div class="main-card">
+            <h2 class="section-title">💻 דוגמאות תוצאות מהכלים</h2>
+
+            <h3 style="font-size: 2em; margin: 40px 0 25px; color: #10b981;">✅ תוצאה טובה - הכל בסדר!</h3>
+
+            <div class="screenshot screenshot-good">
+                <div class="screenshot-title">🔍 Port Scanner - תוצאה מצוינת</div>
+Enter your choice (1-5): <span class="status-warning">1</span><br>
+<br>
+<span class="highlight">============================================================</span><br>
+🔍 LAUNCHING PORT SCANNER...<br>
+<span class="highlight">============================================================</span><br>
+<br>
+🔐 Simple Port Scanner<br>
+Enter target IP (or 'localhost' for your PC): <span class="status-warning">localhost</span><br>
+<br>
+Choose port range:<br>
+1. Quick scan (ports 1-100)<br>
+2. Common ports<br>
+3. Full scan (ports 1-1024)<br>
+<br>
+Your choice (1-4): <span class="status-warning">2</span><br>
+<br>
+<span class="highlight">==================================================</span><br>
+🎯 Target: <span class="ip-highlight">127.0.0.1</span> ← זה ה-IP המקומי שלך!<br>
+📡 Scanning common ports<br>
+<span class="highlight">==================================================</span><br>
+<br>
+<span class="status-good">✅ Scan Complete!</span><br>
+📊 Found 0 open ports<br>
+<br>
+<span class="status-good">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span><br>
+<span class="status-good">✓ SYSTEM STATUS: SECURE ✓</span><br>
+<span class="status-good">✓ No unnecessary services exposed</span><br>
+<span class="status-good">✓ Attack surface minimized</span><br>
+<span class="status-good">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+            </div>
+
+            <div class="success-box">
+                <h4 style="font-size: 1.4em; margin-bottom: 15px;">✅ למה זה טוב?</h4>
+                <ul class="feature-list">
+                    <li>אין פורטים פתוחים מיותרים</li>
+                    <li>המערכת לא חושפת שירותים מיותרים</li>
+                    <li>קשה יותר לתוקפים למצוא נקודות חולשה</li>
+                    <li>המחשב שלך מוגן כראוי</li>
+                </ul>
+
+                <h4 style="font-size: 1.3em; margin: 25px 0 12px; color: #22c55e;">🎯 מה עושים עכשיו?</h4>
+                <p><strong>כלום!</strong> המצב מצוין. המשך לנטר מדי פעם לוודא שהמצב נשאר כך.</p>
+            </div>
+
+            <h3 style="font-size: 2em; margin: 60px 0 25px; color: #ef4444;">🚨 תוצאה רעה - יש בעיה!</h3>
+
+            <div class="screenshot screenshot-bad">
+                <div class="screenshot-title">⚠️ Port Scanner - זוהתה בעיית אבטחה!</div>
+🎯 Target: <span class="ip-highlight">192.168.1.100</span> ← IP של מחשב ברשת<br>
+📡 Scanning common ports<br>
+<span class="highlight">==================================================</span><br>
+<span class="status-error">⚠️  Port 21 is OPEN</span>  → FTP (העברת קבצים לא מוצפנת!)<br>
+<span class="status-error">⚠️  Port 23 is OPEN</span>  → Telnet (סיסמאות גלויות!)<br>
+<span class="status-warning">⚠️  Port 80 is OPEN</span>   → HTTP<br>
+<span class="status-good">✓  Port 443 is OPEN</span>  → HTTPS (בסדר)<br>
+<span class="status-error">⚠️  Port 3389 is OPEN</span> → Remote Desktop (חשוף!)<br>
+<span class="status-error">⚠️  Port 5900 is OPEN</span> → VNC (גישה מרחוק לא מאובטחת!)<br>
+<span class="highlight">==================================================</span><br>
+<span class="status-error">⚠️  WARNING: Found 6 open ports</span><br>
+🔓 Open ports: [21, 23, 80, 443, 3389, 5900]<br>
+<br>
+<span class="status-error">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span><br>
+<span class="status-error">🚨 CRITICAL SECURITY ALERTS:</span><br>
+<span class="status-error">✗ Port 21 (FTP): קבצים וסיסמאות ללא הצפנה!</span><br>
+<span class="status-error">✗ Port 23 (Telnet): כל מה שאתה מקליד - גלוי!</span><br>
+<span class="status-error">✗ Port 3389 (RDP): תוקפים יכולים לנסות לפרוץ!</span><br>
+<span class="status-error">✗ Port 5900 (VNC): גישה למסך שלך ללא אבטחה!</span><br>
+<span class="status-error">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+            </div>
+
+            <div class="warning-box">
+                <h4 style="font-size: 1.4em; margin-bottom: 15px;">⚠️ למה זה מסוכן?</h4>
+                <ul class="feature-list">
+                    <li><strong>FTP (Port 21):</strong> העברת קבצים ללא הצפנה - כולל סיסמאות!</li>
+                    <li><strong>Telnet (Port 23):</strong> כל מה שאתה מקליד נשלח בטקסט גלוי</li>
+                    <li><strong>RDP (Port 3389):</strong> תוקפים יכולים לנסות אלפי סיסמאות</li>
+                    <li><strong>VNC (Port 5900):</strong> גישה למסך שלך ללא אבטחה מספקת</li>
+                </ul>
+
+                <h4 style="font-size: 1.4em; margin: 30px 0 15px; color: #fbbf24;">🔧 מה לעשות עכשיו:</h4>
+
+                <div class="action-box">
+                    <h4>1️⃣ סגור פורטים מסוכנים מיד</h4>
+                    <p><strong>איך?</strong> היכנס להגדרות Windows Firewall:</p>
+                    <div class="code-section">
+                        <code>
+Control Panel → Windows Defender Firewall<br>
+→ Advanced Settings → Inbound Rules<br>
+→ חסום את פורטים 21, 23, 5900
+                        </code>
+                    </div>
+                </div>
+
+                <div class="action-box">
+                    <h4>2️⃣ השתמש בחלופות מאובטחות</h4>
+                    <p>✓ במקום FTP → השתמש ב-<strong>SFTP</strong> (port 22)</p>
+                    <p>✓ במקום Telnet → השתמש ב-<strong>SSH</strong> (port 22)</p>
+                    <p>✓ RDP → הגבל גישה רק מרשת מקומית או VPN</p>
+                </div>
+
+                <div class="action-box">
+                    <h4>3️⃣ בדוק עם כלים נוספים</h4>
+                    <p>🔍 <strong>Nmap:</strong> סורק פורטים מקצועי</p>
+                    <div class="code-section">
+                        <code>הורד מ: https://nmap.org</code>
+                    </div>
+                    <p style="margin-top: 15px;">🛡️ <strong>ShieldsUP!:</strong> בדיקת אבטחה אונליין</p>
+                    <div class="code-section">
+                        <code>https://www.grc.com/shieldsup</code>
+                    </div>
+                </div>
+
+                <div class="action-box">
+                    <h4>4️⃣ שדרג סיסמאות</h4>
+                    <p>✓ שנה סיסמאות של כל השירותים</p>
+                    <p>✓ השתמש בסיסמאות חזקות (12+ תווים)</p>
+                    <p>✓ הפעל Two-Factor Authentication (2FA)</p>
+                </div>
+
+                <div class="action-box">
+                    <h4>5️⃣ הרץ סריקת אנטי-וירוס</h4>
+                    <p>🦠 ייתכן שיש תוכנה זדונית שפתחה את הפורטים</p>
+                    <p>✓ Windows Defender - סריקה מלאה</p>
+                    <p>✓ Malwarebytes - https://malwarebytes.com</p>
+                </div>
+            </div>
+
+            <h3 style="font-size: 2em; margin: 60px 0 25px; color: #10b981;">✅ Network Scanner - רשת תקינה</h3>
+
+            <div class="screenshot screenshot-good">
+                <div class="screenshot-title">🌐 Network Scanner - הכל מזוהה</div>
+Enter your choice (1-5): <span class="status-warning">2</span><br>
+<br>
+🌐 LAUNCHING NETWORK SCANNER...<br>
+⚠️  Make sure you're running as Administrator!<br>
+<br>
+💻 Your IP Address: <span class="ip-highlight">192.168.1.105</span> ← זה ה-IP שלך ברשת!<br>
+📡 Suggested network range: <span class="ip-highlight">192.168.1.0/24</span> ← כל הרשת שלך<br>
+<br>
+Enter target IP range: <span class="status-warning">[Enter]</span> (ברירת מחדל)<br>
+<br>
+<span class="highlight">======================================================================</span><br>
+📱 DISCOVERED DEVICES:<br>
+<span class="highlight">======================================================================</span><br>
+IP Address          MAC Address          Vendor/Type<br>
+----------------------------------------------------------------------<br>
+<span class="ip-highlight">192.168.1.1</span>         00:11:22:33:44:55    <span class="status-good">TP-Link (הראוטר שלך)</span><br>
+<span class="ip-highlight">192.168.1.50</span>        AA:BB:CC:DD:EE:FF    <span class="status-good">Apple iPhone</span><br>
+<span class="ip-highlight">192.168.1.105</span>       11:22:33:44:55:66    <span class="status-good">Your PC ← המחשב שלך!</span><br>
+<span class="ip-highlight">192.168.1.120</span>       FF:EE:DD:CC:BB:AA    <span class="status-good">Samsung TV</span><br>
+<span class="highlight">======================================================================</span><br>
+<span class="status-good">✅ Total devices found: 4</span><br>
+<br>
+<span class="status-good">✓ All devices are recognized and safe!</span>
+            </div>
+
+            <div class="success-box">
+                <h4 style="font-size: 1.4em; margin-bottom: 15px;">📍 איך לזהות את ה-IP שלך:</h4>
+                <ul class="feature-list">
+                    <li><strong>Your IP Address:</strong> <span class="ip-highlight">192.168.1.105</span> - זה ה-IP של המחשב שלך ברשת הביתית</li>
+                    <li><strong>Suggested network range:</strong> <span class="ip-highlight">192.168.1.0/24</span> - זה כל הרשת הביתית שלך (כל המכשירים)</li>
+                    <li><strong>Your PC:</strong> בטבלה, המחשב שלך מסומן במפורש!</li>
+                </ul>
+
+                <h4 style="font-size: 1.3em; margin: 25px 0 12px; color: #22c55e;">🎯 מה עושים עכשיו?</h4>
+                <p><strong>הכל תקין!</strong> כל המכשירים מזוהים ושייכים לך. המשך לנטר מדי פעם.</p>
+            </div>
+
+            <h3 style="font-size: 2em; margin: 60px 0 25px; color: #ef4444;">🚨 Network Scanner - מכשיר חשוד!</h3>
+
+            <div class="screenshot screenshot-bad">
+                <div class="screenshot-title">⚠️ Network Scanner - זוהה מכשיר לא מוכר!</div>
+💻 Your IP Address: <span class="ip-highlight">192.168.1.105</span> ← המחשב שלך<br>
+📡 Scanning network: <span class="ip-highlight">192.168.1.0/24</span> ← כל הרשת<br>
+<br>
+<span class="highlight">======================================================================</span><br>
+📱 DISCOVERED DEVICES:<br>
+<span class="highlight">======================================================================</span><br>
+IP Address          MAC Address          Vendor/Type<br>
+----------------------------------------------------------------------<br>
+<span class="ip-highlight">192.168.1.1</span>         00:11:22:33:44:55    <span class="status-good">TP-Link (Router)</span><br>
+<span class="ip-highlight">192.168.1.50</span>        AA:BB:CC:DD:EE:FF    <span class="status-good">Apple iPhone</span><br>
+<span class="ip-highlight" style="border-color: #ef4444; background: rgba(239, 68, 68, 0.3);">192.168.1.77</span>        <span class="status-error">DE:AD:BE:EF:CA:FE</span>    <span class="status-error">Unknown Device ⚠️</span><br>
+<span class="ip-highlight">192.168.1.105</span>       11:22:33:44:55:66    <span class="status-good">Your PC</span><br>
+<span class="ip-highlight">192.168.1.120</span>       FF:EE:DD:CC:BB:AA    <span class="status-good">Samsung TV</span><br>
+<span class="ip-highlight" style="border-color: #f59e0b; background: rgba(245, 158, 11, 0.3);">192.168.1.132</span>       <span class="status-warning">08:00:27:XX:XX:XX</span>    <span class="status-warning">VirtualBox VM ⚠️</span><br>
+<span class="highlight">======================================================================</span><br>
+<span class="status-error">⚠️  WARNING: Total devices found: 6</span><br>
+<br>
+<span class="status-error">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span><br>
+<span class="status-error">🚨 SUSPICIOUS DEVICES DETECTED!</span><br>
+<span class="status-error">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+            </div>
+
+            <div class="warning-box">
+                <h4 style="font-size: 1.4em; margin-bottom: 15px;">⚠️ למה זה מסוכן?</h4>
+                <ul class="feature-list">
+                    <li><strong>Unknown Device (192.168.1.77):</strong> מכשיר שלא מזוהה במאגר היצרנים!</li>
+                    <li><strong>VirtualBox VM (192.168.1.132):</strong> מכונה וירטואלית - למה יש VM ברשת שלך?</li>
+                    <li>מכשירים לא מוכרים יכולים להיות תוקפים או רוגלות</li>
+                    <li>VM יכולה לשמש למעקב או כשרת Command & Control</li>
+                </ul>
+
+                <h4 style="font-size: 1.4em; margin: 30px 0 15px; color: #fbbf24;">🔧 מה לעשות מיד:</h4>
+
+                <div class="action-box">
+                    <h4>1️⃣ זהה את המכשיר החשוד</h4>
+                    <p><strong>שאל את עצמך:</strong></p>
+                    <ul class="feature-list">
+                        <li>האם אני מכיר את המכשיר ב-<span class="ip-highlight">192.168.1.77</span>?</li>
+                        <li>האם התקנתי VirtualBox או מכונה וירטואלית?</li>
+                        <li>האם מישהו אחר השתמש ברשת שלי?</li>
+                        <li>יש לי WiFi פתוח ללא סיסמה?</li>
+                    </ul>
+                </div>
+
+                <div class="action-box">
+                    <h4>2️⃣ נתק מכשיר חשוד מהרשת</h4>
+                    <p><strong>דרך א':</strong> היכנס לראוטר:</p>
+                    <div class="code-section">
+                        <code>
+1. פתח דפדפן וכתוב: http://192.168.1.1<br>
+2. התחבר עם שם משתמש וסיסמה של הראוטר<br>
+3. חפש "Connected Devices" או "DHCP Client List"<br>
+4. חסום את ה-MAC: DE:AD:BE:EF:CA:FE
+                        </code>
+                    </div>
+                    <p style="margin-top: 15px;"><strong>דרך ב':</strong> שנה סיסמת WiFi מיד!</p>
+                </div>
+
+                <div class="action-box">
+                    <h4>3️⃣ בדוק את המכשיר לעומק</h4>
+                    <p>🔍 <strong>הרץ Port Scanner על המכשיר החשוד:</strong></p>
+                    <div class="code-section">
+                        <code>
+בתפריט בחר: 1 (Port Scanner)<br>
+Enter target IP: 192.168.1.77<br>
+בחר: 3 (Full scan)
+                        </code>
+                    </div>
+                    <p style="margin-top: 15px;">זה יראה לך אילו שירותים רצים על המכשיר החשוד</p>
+                </div>
+
+                <div class="action-box">
+                    <h4>4️⃣ נטר תעבורת רשת</h4>
+                    <p>📡 <strong>הרץ Packet Sniffer:</strong></p>
+                    <div class="code-section">
+                        <code>
+בתפריט בחר: 3 (Packet Sniffer)<br>
+בחר: 1 (Capture 10 packets)<br>
+<br>
+חפש תעבורה מ/ל: 192.168.1.77
+                        </code>
+                    </div>
+                    <p style="margin-top: 15px;">אם תראה תעבורה חשודה - הוא כנראה תוקף!</p>
+                </div>
+
+                <div class="action-box">
+                    <h4>5️⃣ שדרג אבטחת הרשת</h4>
+                    <p>🔒 <strong>צעדי אבטחה חיוניים:</strong></p>
+                    <ul class="feature-list">
+                        <li>שנה סיסמת WiFi לסיסמה חזקה (16+ תווים)</li>
+                        <li>השתמש ב-WPA3 (או לפחות WPA2)</li>
+                        <li>הפעל MAC Address Filtering בראוטר</li>
+                        <li>כבה WPS (WiFi Protected Setup)</li>
+                        <li>הסתר את שם הרשת (SSID Broadcasting)</li>
+                        <li>עדכן firmware של הראוטר</li>
+                    </ul>
+                </div>
+
+                <div class="action-box">
+                    <h4>6️⃣ כלים מקצועיים נוספים</h4>
+                    <p>🛠️ <strong>השתמש בכלים אלה לבדיקה מעמיקה:</strong></p>
+                    <p><strong>Wireshark</strong> - ניתוח תעבורת רשת מתקדם</p>
+                    <div class="code-section">
+                        <code>https://www.wireshark.org</code>
+                    </div>
+                    <p style="margin-top: 15px;"><strong>Angry IP Scanner</strong> - סריקת רשת מהירה</p>
+                    <div class="code-section">
+                        <code>https://angryip.org</code>
+                    </div>
+                    <p style="margin-top: 15px;"><strong>Fing</strong> - אפליקציה לניטור רשת (Android/iOS)</p>
+                    <div class="code-section">
+                        <code>חפש "Fing" בחנות האפליקציות</code>
+                    </div>
+                </div>
+
+                <div class="action-box">
+                    <h4>7️⃣ פנה לעזרה מקצועית</h4>
+                    <p>אם אתה חושד בפריצה רצינית:</p>
+                    <ul class="feature-list">
+                        <li>פנה לספק האינטרנט שלך</li>
+                        <li>שקול ייעוץ של מומחה אבטחת מידע</li>
+                        <li>דווח למשטרה אם חושד בפשע סייבר</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="font-size: 2em; margin: 60px 0 25px; color: #10b981;">✅ Packet Sniffer - תעבורה תקינה</h3>
+
+            <div class="screenshot screenshot-good">
+                <div class="screenshot-title">📡 Packet Sniffer - תעבורה רגילה</div>
+Enter your choice (1-5): <span class="status-warning">3</span><br>
+<br>
+📡 LAUNCHING PACKET SNIFFER...<br>
+⚠️  Make sure you're running as Administrator!<br>
+<br>
+Capture Options:<br>
+1. Capture 10 packets (all traffic)<br>
+2. Capture 50 packets (all traffic)<br>
+3. Capture HTTP/HTTPS only<br>
+4. Capture DNS only<br>
+<br>
+Your choice (1-4): <span class="status-warning">1</span><br>
+<br>
+<span class="highlight">============================================================</span><br>
+Packet #1 | Time: 15:30:45<br>
+<span class="highlight">============================================================</span><br>
+IP Layer:<br>
+   Source IP:      <span class="ip-highlight">192.168.1.105</span> ← המחשב שלך<br>
+   Destination IP: <span class="ip-highlight">142.250.185.227</span> ← שרת Google<br>
+   Protocol:       6 (TCP)<br>
+<br>
+TCP Segment:<br>
+   Source Port:      64036<br>
+   Destination Port: 443<br>
+   Flags:            PA (Push + Ack)<br>
+   <span class="status-good">Service:          HTTPS ✓ (מוצפן!)</span><br>
+<span class="highlight">============================================================</span><br>
+<br>
+Packet #2 | Time: 15:30:46<br>
+<span class="highlight">============================================================</span><br>
+UDP Datagram:<br>
+   Destination Port: 53<br>
+   <span class="status-good">Service:          DNS ✓ (חיפוש אתרים)</span><br>
+<span class="highlight">============================================================</span><br>
+<br>
+📊 Protocol Statistics:<br>
+   <span class="status-good">TCP: 8 (גלישה מאובטחת)</span><br>
+   <span class="status-good">UDP: 2 (בקשות DNS)</span><br>
+<br>
+<span class="status-good">✓ All traffic is encrypted and normal!</span>
+            </div>
+
+            <div class="success-box">
+                <h4 style="font-size: 1.4em; margin-bottom: 15px;">📍 איך לקרוא את התעבורה:</h4>
+                <ul class="feature-list">
+                    <li><strong>Source IP:</strong> <span class="ip-highlight">192.168.1.105</span> - זה אתה (המחשב שלך שולח)</li>
+                    <li><strong>Destination IP:</strong> <span class="ip-highlight">142.250.185.227</span> - שרת באינטרנט (לאן אתה מתחבר)</li>
+                    <li><strong>Port 443 (HTTPS):</strong> גלישה מוצפנת ומאובטחת ✓</li>
+                    <li><strong>Port 53 (DNS):</strong> תרגום שמות אתרים ל-IP</li>
+                </ul>
+
+                <h4 style="font-size: 1.3em; margin: 25px 0 12px; color: #22c55e;">🎯 מה עושים עכשיו?</h4>
+                <p><strong>הכל תקין!</strong> התעבורה מוצפנת ונראית רגילה. המשך לעבוד בשקט.</p>
+            </div>
+
+            <h3 style="font-size: 2em; margin: 60px 0 25px; color: #ef4444;">🚨 Packet Sniffer - פעילות חשודה!</h3>
+
+            <div class="screenshot screenshot-bad">
+                <div class="screenshot-title">⚠️ Packet Sniffer - זוהתה תעבורה מסוכנת!</div>
+Packet #1 | Time: 16:45:23<br>
+<span class="highlight">============================================================</span><br>
+ARP Packet:<br>
+   Source IP:      <span class="ip-highlight" style="border-color: #ef4444; background: rgba(239, 68, 68, 0.3);">192.168.1.77</span> <span class="status-error">(המכשיר החשוד!)</span><br>
+   Destination IP: <span class="ip-highlight">192.168.1.1</span> (הראוטר)<br>
+   Operation:      1 (Request)<br>
+   <span class="status-error">⚠️  ARP Spoofing Attempt Detected!</span><br>
+   <span class="status-error">הוא מתחזה לראוטר כדי לגנוב תעבורה!</span><br>
+<br>
+Packet #2 | Time: 16:45:24<br>
+<span class="highlight">============================================================</span><br>
+IP Layer:<br>
+   Source IP:      <span class="ip-highlight">192.168.1.105</span> (אתה)<br>
+   Destination IP: <span class="status-error">185.XXX.XXX.XXX (IP חשוד!)</span><br>
+<br>
+TCP Segment:<br>
+   Destination Port: <span class="status-error">23 (Telnet - לא מוצפן!)</span><br>
+   <span class="status-error">⚠️  הסיסמאות שלך נשלחות בטקסט גלוי!</span><br>
+<br>
+Packet #3 | Time: 16:45:25<br>
+<span class="highlight">============================================================</span><br>
+IP Layer:<br>
+   Source IP:      <span class="ip-highlight" style="border-color: #ef4444; background: rgba(239, 68, 68, 0.3);">192.168.1.77</span> <span class="status-error">(תוקף!)</span><br>
+   Destination IP: <span class="ip-highlight">192.168.1.0/24</span> (כל הרשת)<br>
+<br>
+<span class="status-error">⚠️  Port Scan Detected!</span><br>
+   <span class="status-error">התוקף סורק את כל המכשירים ברשת!</span><br>
+<br>
+Packet #4 | Time: 16:45:26<br>
+<span class="highlight">============================================================</span><br>
+TCP Segment:<br>
+   Destination Port: <span class="status-error">21 (FTP - Plain text!)</span><br>
+<br>
+📄 Payload Preview:<br>
+   <span class="status-error">"USER admin"</span><br>
+   <span class="status-error">"PASS p@ssw0rd123"</span><br>
+   <span class="status-error">⚠️  סיסמאות נחשפו בטקסט גלוי!</span><br>
+<br>
+<span class="status-error">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span><br>
+<span class="status-error">🚨 CRITICAL: ACTIVE ATTACK IN PROGRESS!</span><br>
+<span class="status-error">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+            </div>
+
+            <div class="warning-box" style="border-color: #dc2626; border-width: 4px;">
+                <h4 style="font-size: 1.6em; margin-bottom: 15px; color: #fca5a5;">🚨 התקפה פעילה - פעל מיד!</h4>
+                
+                <div class="action-box" style="background: rgba(220, 38, 38, 0.3); border-color: #dc2626;">
+                    <h4 style="color: #fca5a5;">⚡ פעולות מיידיות (עכשיו!):</h4>
+                    <ul class="feature-list">
+                        <li><strong>נתק את המחשב מהאינטרנט!</strong> (כבה WiFi או נתק כבל)</li>
+                        <li><strong>אל תקליד סיסמאות!</strong> כל מה שאתה מקליד - נגנב!</li>
+                        <li><strong>כבה את הראוטר ל-30 שניות</strong></li>
+                    </ul>
+                </div>
+
+                <div class="action-box">
+                    <h4>1️⃣ זהה את המקור של ההתקפה</h4>
+                    <p>ה-IP התוקף: <span class="ip-highlight" style="border-color: #ef4444;">192.168.1.77</span></p>
+                    <p><strong>הרץ Network Scanner מיד:</strong></p>
+                    <div class="code-section">
+                        <code>
+בתפריט בחר: 2 (Network Scanner)<br>
+זהה את המכשיר עם ה-MAC: DE:AD:BE:EF:CA:FE<br>
+חסום אותו בראוטר!
+                        </code>
+                    </div>
+                </div>
+
+                <div class="action-box">
+                    <h4>2️⃣ נקה את המערכת</h4>
+                    <p>🦠 <strong>הרץ סריקות אבטחה:</strong></p>
+                    <ul class="feature-list">
+                        <li>Windows Defender - סריקה מלאה במצב לא מקוון</li>
+                        <li>Malwarebytes - https://malwarebytes.com</li>
+                        <li>Kaspersky Rescue Disk - אם החשד רציני</li>
+                    </ul>
+                </div>
+
+                <div class="action-box">
+                    <h4>3️⃣ שנה כל סיסמה - מיד!</h4>
+                    <p><strong>הסיסמאות שלך נחשפו!</strong> שנה:</p>
+                    <ul class="feature-list">
+                        <li>סיסמת WiFi</li>
+                        <li>סיסמת הראוטר</li>
+                        <li>סיסמאות Windows/Email</li>
+                        <li>בנקים ואתרי מסחר</li>
+                        <li>רשתות חברתיות</li>
+                    </ul>
+                </div>
+
+                <div class="action-box">
+                    <h4>4️⃣ בדוק נזקים</h4>
+                    <p>🔍 <strong>מה לבדוק:</strong></p>
+                    <ul class="feature-list">
+                        <li>תנועות בנק חשודות</li>
+                        <li>הודעות email לא מוכרות</li>
+                        <li>שינויים בהגדרות חשבונות</li>
+                        <li>קבצים חדשים במחשב</li>
+                    </ul>
+                </div>
+
+                <div class="action-box">
+                    <h4>5️⃣ שדרג אבטחה</h4>
+                    <p>🛡️ <strong>מנע התקפות עתידיות:</strong></p>
+                    <ul class="feature-list">
+                        <li>התקן Firewall חזק (ZoneAlarm, Comodo)</li>
+                        <li>השתמש ב-VPN (NordVPN, ExpressVPN)</li>
+                        <li>הפעל encryption בראוטר (WPA3)</li>
+                        <li>עדכן את כל התוכנות</li>
+                        <li>השבת UPnP בראוטר</li>
+                    </ul>
+                </div>
+
+                <div class="action-box" style="background: rgba(220, 38, 38, 0.3); border-color: #dc2626;">
+                    <h4 style="color: #fca5a5;">📞 מתי לפנות לעזרה מקצועית:</h4>
+                    <ul class="feature-list">
+                        <li>אם יש עדויות לגניבת כסף/נתונים</li>
+                        <li>אם החשד שהפריצה ממושכת</li>
+                        <li>אם אתה מנהל עסק/חברה</li>
+                        <li>אם נגנבו נתונים רגישים</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>פנה ל:</strong></p>
+                    <p>🚔 משטרת ישראל - יחידת הסייבר הלאומית</p>
+                    <p>🛡️ מומחה אבטחת מידע פרטי</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- טבלת סיכום -->
+        <div class="main-card">
+            <h2 class="section-title">📊 טבלת זיהוי מהיר</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>מה ראית</th>
+                        <th>משמעות</th>
+                        <th>רמת חומרה</th>
+                        <th>מה לעשות</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0 פורטים פתוחים</td>
+                        <td>מערכת מאובטחת</td>
+                        <td><span class="status-good">✓ בסדר</span></td>
+                        <td>המשך לנטר</td>
+                    </tr>
+                    <tr>
+                        <td>Port 21, 23 פתוחים</td>
+                        <td>פרוטוקולים לא מוצפנים</td>
+                        <td><span class="status-error">⚠️ גבוהה</span></td>
+                        <td>סגור מיד!</td>
+                    </tr>
+                    <tr>
+                        <td>Unknown Device</td>
+                        <td>מכשיר לא מזוהה ברשת</td>
+                        <td><span class="status-warning">⚠️ בינונית</span></td>
+                        <td>חקור וחסום</td>
+                    </tr>
+                    <tr>
+                        <td>ARP Spoofing</td>
+                        <td>התקפת Man-in-the-Middle</td>
+                        <td><span class="status-error">🚨 קריטית</span></td>
+                        <td>נתק מיד!</td>
+                    </tr>
+                    <tr>
+                        <td>HTTPS Traffic</td>
+                        <td>גלישה מוצפנת</td>
+                        <td><span class="status-good">✓ בסדר</span></td>
+                        <td>המשך כרגיל</td>
+                    </tr>
+                    <tr>
+                        <td>Plain Text Passwords</td>
+                        <td>סיסמאות גלויות</td>
+                        <td><span class="status-error">🚨 קריטית</span></td>
+                        <td>שנה סיסמאות!</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- מילון מונחים -->
+        <div class="main-card">
+            <h2 class="section-title">📖 מילון מונחים למתחילים</h2>
+
+            <div class="feature-grid">
+                <div class="info-box">
+                    <h4>🌐 IP Address</h4>
+                    <p>"כתובת" של מכשיר ברשת. כמו כתובת בית - כך המכשירים מוצאים אחד את השני.</p>
+                    <p><strong>דוגמה:</strong> <span class="ip-highlight">192.168.1.105</span></p>
+                </div>
+
+                <div class="info-box">
+                    <h4>🔢 MAC Address</h4>
+                    <p>מזהה ייחודי של כרטיס הרשת. כמו תעודת זהות של המכשיר - לא משתנה.</p>
+                    <p><strong>דוגמה:</strong> AA:BB:CC:DD:EE:FF</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>🚪 Port (פורט)</h4>
+                    <p>"דלת" במחשב שדרכה שירותים מתקשרים. כל שירות מאזין על פורט אחר.</p>
+                    <p><strong>דוגמה:</strong> Port 80 = HTTP</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>🔐 HTTPS</h4>
+                    <p>גלישה מוצפנת באינטרנט. אף אחד לא יכול לקרוא מה אתה עושה.</p>
+                    <p><strong>Port:</strong> 443</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>⚡ ARP Spoofing</h4>
+                    <p>התקפה שבה תוקף מתחזה למכשיר אחר כדי לגנוב תעבורה.</p>
+                    <p><strong>סכנה:</strong> גבוהה מאוד!</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>📡 DNS</h4>
+                    <p>מתרגם שמות אתרים (google.com) למספרי IP שהמחשב מבין.</p>
+                    <p><strong>Port:</strong> 53</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>🔴 FTP</h4>
+                    <p>העברת קבצים ללא הצפנה. סיסמאות גלויות!</p>
+                    <p><strong>Port:</strong> 21 (מסוכן!)</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>💻 RDP</h4>
+                    <p>Remote Desktop - שליטה מרחוק במחשב Windows.</p>
+                    <p><strong>Port:</strong> 3389</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>🌐 Router (ראוטר)</h4>
+                    <p>המכשיר שמחבר את כל הבית לאינטרנט. בדרך כלל ה-IP שלו: 192.168.1.1</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- שאלות נפוצות -->
+        <div class="main-card">
+            <h2 class="section-title">❓ שאלות נפוצות</h2>
+
+            <div class="info-box" style="margin: 25px 0;">
+                <h4 style="font-size: 1.3em; margin-bottom: 10px;">❓ איך אני יודע מה ה-IP שלי?</h4>
+                <p><strong>בכלי Network Scanner:</strong> ה-IP שלך מוצג בשורה הראשונה:</p>
+                <p style="margin-top: 10px;">💻 Your IP Address: <span class="ip-highlight">192.168.1.105</span> ← זה אתה!</p>
+                <p style="margin-top: 10px;"><strong>אפשרות נוספת:</strong> פתח CMD והקלד: <code>ipconfig</code></p>
+                <p>חפש את השורה: "IPv4 Address"</p>
+            </div>
+
+            <div class="info-box" style="margin: 25px 0;">
+                <h4 style="font-size: 1.3em; margin-bottom: 10px;">❓ מה זה ה-IP של הרשת שלי?</h4>
+                <p><strong>ה-IP של הרשת:</strong> זה הטווח של כל המכשירים בבית שלך.</p>
+                <p style="margin-top: 10px;">אם ה-IP שלך: <span class="ip-highlight">192.168.1.105</span></p>
+                <p>אז הרשת: <span class="ip-highlight">192.168.1.0/24</span></p>
+                <p style="margin-top: 10px;"><strong>משמעות:</strong> כל המכשירים מ-192.168.1.1 עד 192.168.1.254</p>
+            </div>
+
+            <div class="info-box" style="margin: 25px 0;">
+                <h4 style="font-size: 1.3em; margin-bottom: 10px;">❓ למה אני צריך Administrator?</h4>
+                <p>כלים 2 ו-3 (Network Scanner ו-Packet Sniffer) צריכים גישה ישירה לכרטיס הרשת.</p>
+                <p style="margin-top: 10px;"><strong>ללא Administrator:</strong> Windows חוסם את הגישה מטעמי אבטחה.</p>
+            </div>
+
+            <div class="info-box" style="margin: 25px 0;">
+                <h4 style="font-size: 1.3em; margin-bottom: 10px;">❓ איך אני יודע שהכלי עובד?</h4>
+                <p><strong>Port Scanner:</strong> אם הוא מציג "Scan Complete" - הוא עבד!</p>
+                <p><strong>Network Scanner:</strong> אם הוא מצא לפחות את הראוטר - הוא עבד!</p>
+                <p><strong>Packet Sniffer:</strong> אם הוא תפס חבילות - הוא עבד!</p>
+            </div>
+
+            <div class="warning-box" style="margin: 25px 0;">
+                <h4 style="font-size: 1.3em; margin-bottom: 10px;">❓ האם זה חוקי להשתמש בכלים?</h4>
+                <p><strong>✅ חוקי:</strong> לבדוק את המחשב והרשת שלך</p>
+                <p><strong>❌ לא חוקי:</strong> לבדוק מחשבים/רשתות של אחרים ללא אישור!</p>
+                <p style="margin-top: 15px;"><strong>חשוב:</strong> אל תסרוק רשתות ציבוריות, מקומות עבודה, או כל מקום שאינך הבעלים!</p>
+            </div>
+
+            <div class="info-box" style="margin: 25px 0;">
+                <h4 style="font-size: 1.3em; margin-bottom: 10px;">❓ כמה פעמים כדאי להריץ בדיקות?</h4>
+                <p><strong>Port Scanner:</strong> פעם בשבוע</p>
+                <p><strong>Network Scanner:</strong> פעם ביום (במיוחד אם יש WiFi)</p>
+                <p><strong>Packet Sniffer:</strong> רק כשיש חשד לבעיה</p>
+            </div>
+
+            <div class="info-box" style="margin: 25px 0;">
+                <h4 style="font-size: 1.3em; margin-bottom: 10px;">❓ מה אם אני מוצא משהו חשוד?</h4>
+                <p><strong>1.</strong> אל תיכנס לפאניקה!</p>
+                <p><strong>2.</strong> עקוב אחר ההמלצות בחלק "מה לעשות"</p>
+                <p><strong>3.</strong> תעד הכל (צילומי מסך)</p>
+                <p><strong>4.</strong> אם צריך - פנה לעזרה מקצועית</p>
+            </div>
+        </div>
+
+        <!-- טיפים לשימוש יומיומי -->
+        <div class="main-card">
+            <h2 class="section-title">💡 טיפים לשימוש חכם</h2>
+
+            <div class="feature-grid">
+                <div class="success-box">
+                    <h4>✅ עשה</h4>
+                    <ul class="feature-list">
+                        <li>בדוק את הרשת שלך באופן קבוע</li>
+                        <li>שמור תיעוד של הבדיקות</li>
+                        <li>עדכן את הכלים מדי פעם</li>
+                        <li>למד מהתוצאות</li>
+                        <li>שתף ידע עם אחרים</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>❌ אל תעשה</h4>
+                    <ul class="feature-list">
+                        <li>אל תסרוק רשתות של אחרים</li>
+                        <li>אל תתקוף מערכות</li>
+                        <li>אל תפרסם מידע רגיש</li>
+                        <li>אל תשתמש בידע לרעה</li>
+                        <li>אל תתעלם מאזהרות</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>📚 המשך ללמוד</h4>
+                    <ul class="feature-list">
+                        <li>קרא על אבטחת מידע</li>
+                        <li>התנסה בכלים נוספים</li>
+                        <li>הצטרף לפורומים</li>
+                        <li>שפר את הקוד</li>
+                        <li>בנה כלים נוספים</li>
+                    </ul>
+                </div>
+
+                <div class="action-box">
+                    <h4>🎯 פרויקטים מומלצים</h4>
+                    <ul class="feature-list">
+                        <li>הוסף שמירת דוחות לקובץ</li>
+                        <li>צור גרפים של הנתונים</li>
+                        <li>בנה ממשק גרפי (GUI)</li>
+                        <li>הוסף התראות אוטומטיות</li>
+                        <li>שלב עם בסיס נתונים</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- משאבים נוספים -->
+        <div class="main-card">
+            <h2 class="section-title">🔗 משאבים ללימוד נוסף</h2>
+
+            <div class="info-box">
+                <h4 style="font-size: 1.4em; margin-bottom: 15px;">📖 קורסים מומלצים</h4>
+                <p><strong>Hebrew Hacking:</strong> קורסים בעברית על אבטחת מידע</p>
+                <p><strong>Cybrary:</strong> קורסים חינמיים באנגלית</p>
+                <p><strong>TryHackMe:</strong> תרגול מעשי של hacking אתי</p>
+            </div>
+
+            <div class="info-box" style="margin-top: 25px;">
+                <h4 style="font-size: 1.4em; margin-bottom: 15px;">🛠️ כלים מקצועיים</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>כלי</th>
+                            <th>תיאור</th>
+                            <th>קישור</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nmap</td>
+                            <td>סריקת פורטים מתקדמת</td>
+                            <td>nmap.org</td>
+                        </tr>
+                        <tr>
+                            <td>Wireshark</td>
+                            <td>ניתוח תעבורת רשת</td>
+                            <td>wireshark.org</td>
+                        </tr>
+                        <tr>
+                            <td>Metasploit</td>
+                            <td>מסגרת לבדיקות חדירה</td>
+                            <td>metasploit.com</td>
+                        </tr>
+                        <tr>
+                            <td>Kali Linux</td>
+                            <td>מערכת הפעלה לאבטחה</td>
+                            <td>kali.org</td>
+                        </tr>
+                        <tr>
+                            <td>Burp Suite</td>
+                            <td>בדיקת אבטחת אפליקציות</td>
+                            <td>portswigger.net</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="success-box" style="margin-top: 25px;">
+                <h4 style="font-size: 1.4em; margin-bottom: 15px;">🎓 תעודות מקצועיות</h4>
+                <p><strong>CEH (Certified Ethical Hacker)</strong> - תעודה בינלאומית</p>
+                <p><strong>CompTIA Security+</strong> - יסודות אבטחת מידע</p>
+                <p><strong>OSCP</strong> - בדיקות חדירה מתקדמות</p>
+            </div>
+        </div>
+
+        <footer>
+            <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(236, 72, 153, 0.3)); padding: 30px; border-radius: 20px; margin-bottom: 40px; border: 2px solid rgba(139, 92, 246, 0.5);">
+                <h3 style="font-size: 1.8em; color: #a78bfa; margin-bottom: 15px;">👨‍💻 נוצר על ידי</h3>
+                <p style="font-size: 2em; font-weight: bold; color: #fff; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+                    שון דמארי
+                </p>
+                <p style="font-size: 1.1em; margin-top: 15px; opacity: 0.9;">
+                    מפתח, חוקר אבטחת מידע וחובב Python
+                </p>
+                <div style="margin-top: 20px; font-size: 0.95em;">
+                    <p>🔐 Cybersecurity Enthusiast | 🐍 Python Developer | 💡 Ethical Hacking Advocate</p>
+                </div>
+            </div>
+
+            <h2>🎉 סיכום</h2>
+            <p style="font-size: 1.2em; margin: 20px 0;">
+                <strong>cybersec_toolkit.py</strong> הוא תפריט מרכזי חכם שמאפשר לך לנהל את כל כלי אבטחת המידע במקום אחד!
+            </p>
+            
+            <div style="margin: 30px 0;">
+                <h3 style="font-size: 1.3em; color: #60a5fa; margin-bottom: 15px;">מה למדת:</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin: 10px 0;">✅ איך להריץ את התפריט המאוחד</li>
+                    <li style="margin: 10px 0;">✅ איך לזהות תוצאה טובה מתוצאה רעה</li>
+                    <li style="margin: 10px 0;">✅ מה לעשות כשמוצאים בעיה</li>
+                    <li style="margin: 10px 0;">✅ איך למצוא את ה-IP שלך וה-IP של הרשת</li>
+                    <li style="margin: 10px 0;">✅ באילו כלים להשתמש להמשך</li>
+                </ul>
+            </div>
+
+            <div style="background: rgba(139, 92, 246, 0.2); padding: 25px; border-radius: 15px; margin: 30px 0;">
+                <h3 style="color: #a78bfa; margin-bottom: 15px;">⚠️ תזכורת חשובה</h3>
+                <p>כלים אלה נועדו <strong>למטרות חינוכיות בלבד</strong>!</p>
+                <p style="margin-top: 10px;">השתמש רק ברשתות ומערכות <strong>שבבעלותך</strong> או שיש לך <strong>אישור מפורש</strong> לבדוק.</p>
+                <p style="margin-top: 10px; font-weight: bold; color: #fbbf24;">שימוש לא חוקי עלול להוביל לתביעות משפטיות!</p>
+            </div>
+
+            <p style="margin-top: 30px; font-size: 0.9em; opacity: 0.8;">
+                נבנה עם ❤️ על ידי שון דמארי | Python + Scapy | 2024
+            </p>
+            <p style="margin-top: 10px; font-size: 1.2em; font-weight: bold; color: #10b981;">
+                🔒 Hack Ethically | Stay Curious | Keep Learning! 🔒
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
